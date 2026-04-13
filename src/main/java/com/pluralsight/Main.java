@@ -81,48 +81,28 @@ public class Main {
         needsRoadsideAssistance = promptForYesNo("Do you need roadside assistance (yes/no): ");
         currentAge = promptForInt("How old are you: ");
 
-
         //compute unknown values.
 
         //basic costs
         double priceOfBasicCarRentalDaily = 29.99;
         double costOfBasicCarRental = priceOfBasicCarRentalDaily * numberOfDays;
 
-
-
         //options
 
         //option1
-        double costOfGps;
-        if(needsGps){
-            costOfGps = priceOfGpsDaily * numberOfDays;
-        }
-        else{
-            costOfGps = 0;
-        }
-        
-        //option2
+        double costOfGps = (needsGps) ? (priceOfGpsDaily * numberOfDays) : 0;
         double costOfTollTag = (needsTollTag) ? (priceOfTollTagDaily * numberOfDays) : 0;
-
-        //option3
-        double costOfRoadsideAssistance = 0;
-        if(needsRoadsideAssistance){
-            costOfRoadsideAssistance = priceOfRoadsideAssistanceDaily * numberOfDays;
-        }
-
+        double costOfRoadsideAssistance = (needsRoadsideAssistance) ? (priceOfRoadsideAssistanceDaily * numberOfDays) : 0;
         double costOfOptions = costOfGps + costOfTollTag + costOfRoadsideAssistance;
 
         //surcharge
-        double costOfUnderageSurcharge = 0;
-        //todo calculate underage surcharge
         double underageSurchargeRatePercentage = 0.3; // 30%
         int underageExemptAge = 25;
 
+        double costOfUnderageSurcharge = (currentAge < underageExemptAge) ? (costOfBasicCarRental * underageSurchargeRatePercentage) : 0;
+
         //total
-        double costTotal = 0;
-//todo calculate total
-
-
+        double costTotal = costOfBasicCarRental + costOfOptions + costOfUnderageSurcharge;
 
         //display the output.
         System.out.println("Car Rental Costs:");
@@ -130,8 +110,6 @@ public class Main {
         System.out.printf("Options: %.2f\n", costOfOptions);
         System.out.printf("Surcharge: %.2f\n", costOfUnderageSurcharge);
         System.out.printf("Total: %.2f\n", costTotal);
-
-
 
     }
 }
