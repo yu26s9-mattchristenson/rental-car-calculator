@@ -4,13 +4,15 @@ import java.util.Scanner;
 
 public class Main {
 
+    public static Scanner scanner = new Scanner(System.in);
+
     /**
      * Prompts the user for a double.
      * @param prompt to display the user
      * @param scanner to interact with user
      * @return the double the user selected.
      */
-    public static double promptForDouble(String prompt, Scanner scanner) {
+    public static double promptForDouble(String prompt) {
 
         System.out.print(prompt);
         double result =  scanner.nextDouble();
@@ -25,7 +27,7 @@ public class Main {
      * @param scanner to interact with user
      * @return the string the user selected.
      */
-    public static String promptForString(String prompt, Scanner scanner) {
+    public static String promptForString(String prompt) {
         System.out.print(prompt);
         return scanner.nextLine();
     }
@@ -36,7 +38,7 @@ public class Main {
      * @param scanner to interact with user
      * @return the int the user selected.
      */
-    public static int promptForInt(String prompt, Scanner scanner) {
+    public static int promptForInt(String prompt) {
 
         System.out.print(prompt);
         int result =  scanner.nextInt();
@@ -46,23 +48,19 @@ public class Main {
     }
 
     /**
-     * Prompts the user for a double.
+     * Prompts the user for a Yes or No which is returned as a boolean.
      * @param prompt to display the user
      * @param scanner to interact with user
-     * @return the double the user selected.
+     * @return the boolean
      */
-    public static boolean promptForYesNo(String prompt, Scanner scanner) {
-return true; //todo: fix this!
-//        System.out.print(prompt);
-//        double result =  scanner.nextDouble();
-//        scanner.nextLine();
-//        return result;
-
+    public static boolean promptForYesNo(String prompt) {
+        System.out.print(prompt);
+        String userInput = scanner.nextLine();
+        return userInput.equalsIgnoreCase("YES");
+        //opportunity to enhance this with some error protection.
     }
 
-
     public static void main(){
-        Scanner scanner = new Scanner(System.in);
 
 
         //prompt the user for known values.
@@ -76,15 +74,19 @@ return true; //todo: fix this!
         double priceOfRoadsideAssistanceDaily = 3.95;
         int currentAge;
 
-        pickupDate = promptForString("Please enter a pickup date: ", scanner);
-        numberOfDays = promptForInt("Please enter the number of days for the rental: ", scanner);
-
+        pickupDate = promptForString("Please enter a pickup date: ");
+        numberOfDays = promptForInt("Please enter the number of days for the rental: ");
+        needsTollTag = promptForYesNo("Do you need a electronic Toll Tag (yes/no): ");
+        needsGps = promptForYesNo("Do you need a GPS device (yes/no): ");
+        needsRoadsideAssistance = promptForYesNo("Do you need roadside assistance (yes/no): ");
+        currentAge = promptForInt("How old are you: ");
 
 
         //compute unknown values.
 
         //basic costs
         double costOfBasicCarRental = 0;
+        //todo calculate basic car rental cost
         double priceOfBasicCarRentalDaily = 29.99;
 
         //options
@@ -92,12 +94,13 @@ return true; //todo: fix this!
 
         //surcharge
         double costOfUnderageSurcharge = 0;
+        //todo calculate underage surcharge
         double underageSurchargeRatePercentage = 0.3; // 30%
         int underageExemptAge = 25;
 
         //total
         double costTotal = 0;
-
+//todo calculate total
 
 
 
