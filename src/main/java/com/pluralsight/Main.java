@@ -1,7 +1,69 @@
 package com.pluralsight;
 
+import java.util.Scanner;
+
 public class Main {
+
+    /**
+     * Prompts the user for a double.
+     * @param prompt to display the user
+     * @param scanner to interact with user
+     * @return the double the user selected.
+     */
+    public static double promptForDouble(String prompt, Scanner scanner) {
+
+        System.out.print(prompt);
+        double result =  scanner.nextDouble();
+        scanner.nextLine();
+        return result;
+
+    }
+
+    /**
+     * Prompts the user for a string.
+     * @param prompt to display the user
+     * @param scanner to interact with user
+     * @return the string the user selected.
+     */
+    public static String promptForString(String prompt, Scanner scanner) {
+        System.out.print(prompt);
+        return scanner.nextLine();
+    }
+
+    /**
+     * Prompts the user for an integer.
+     * @param prompt to display the user
+     * @param scanner to interact with user
+     * @return the int the user selected.
+     */
+    public static int promptForInt(String prompt, Scanner scanner) {
+
+        System.out.print(prompt);
+        int result =  scanner.nextInt();
+        scanner.nextLine();
+        return result;
+
+    }
+
+    /**
+     * Prompts the user for a double.
+     * @param prompt to display the user
+     * @param scanner to interact with user
+     * @return the double the user selected.
+     */
+    public static boolean promptForYesNo(String prompt, Scanner scanner) {
+return true; //todo: fix this!
+//        System.out.print(prompt);
+//        double result =  scanner.nextDouble();
+//        scanner.nextLine();
+//        return result;
+
+    }
+
+
     public static void main(){
+        Scanner scanner = new Scanner(System.in);
+
 
         //prompt the user for known values.
         String pickupDate;
@@ -13,6 +75,15 @@ public class Main {
         boolean needsRoadsideAssistance;
         double priceOfRoadsideAssistanceDaily = 3.95;
         int currentAge;
+
+        System.out.print("Please enter a pickup date: ");
+        pickupDate = scanner.nextLine();
+
+        System.out.println("Please enter the number of days for the rental: ");
+        numberOfDays = scanner.nextInt();
+        scanner.nextLine();
+
+
 
 
         //compute unknown values.
