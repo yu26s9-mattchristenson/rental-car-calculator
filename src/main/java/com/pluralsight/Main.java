@@ -76,13 +76,8 @@ return true; //todo: fix this!
         double priceOfRoadsideAssistanceDaily = 3.95;
         int currentAge;
 
-        System.out.print("Please enter a pickup date: ");
-        pickupDate = scanner.nextLine();
-
-        System.out.println("Please enter the number of days for the rental: ");
-        numberOfDays = scanner.nextInt();
-        scanner.nextLine();
-
+        pickupDate = promptForString("Please enter a pickup date: ", scanner);
+        numberOfDays = promptForInt("Please enter the number of days for the rental: ", scanner);
 
 
 
