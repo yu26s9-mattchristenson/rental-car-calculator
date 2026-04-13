@@ -85,12 +85,32 @@ public class Main {
         //compute unknown values.
 
         //basic costs
-        double costOfBasicCarRental = 0;
-        //todo calculate basic car rental cost
         double priceOfBasicCarRentalDaily = 29.99;
+        double costOfBasicCarRental = priceOfBasicCarRentalDaily * numberOfDays;
+
+
 
         //options
-        double costOfOptions = 0;
+
+        //option1
+        double costOfGps;
+        if(needsGps){
+            costOfGps = priceOfGpsDaily * numberOfDays;
+        }
+        else{
+            costOfGps = 0;
+        }
+        
+        //option2
+        double costOfTollTag = (needsTollTag) ? (priceOfTollTagDaily * numberOfDays) : 0;
+
+        //option3
+        double costOfRoadsideAssistance = 0;
+        if(needsRoadsideAssistance){
+            costOfRoadsideAssistance = priceOfRoadsideAssistanceDaily * numberOfDays;
+        }
+
+        double costOfOptions = costOfGps + costOfTollTag + costOfRoadsideAssistance;
 
         //surcharge
         double costOfUnderageSurcharge = 0;
